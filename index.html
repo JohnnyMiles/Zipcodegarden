@@ -1,0 +1,1547 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-3YKLP69T28"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-3YKLP69T28');
+    </script>
+    
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Zip Code Garden - Personalized Plant Care Guides</title>
+    <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,600;0,9..144,700;1,9..144,400;1,9..144,600&family=Source+Serif+4:ital,wght@0,300;0,400;0,600;1,300;1,400&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --cream:   #faf7f2;
+            --ivory:   #f3ede3;
+            --parchment: #e8dfd0;
+            --slate:   #2e4057;
+            --slate2:  #3d5270;
+            --slate3:  #4f6585;
+            --terra:   #b5522a;
+            --terra2:  #d4693a;
+            --sage:    #6b7f5e;
+            --ink:     #1a1a1a;
+            --body:    #3d3530;
+            --muted:   #7a6e65;
+            --line:    #ddd5c8;
+            --white:   #ffffff;
+            --ok-bg:   #eef5eb;
+            --ok-line: #a8c99a;
+            --ok-text: #2d5a1e;
+            --warn-bg: #fdf5ec;
+            --warn-line: #e8b87a;
+            --warn-text: #7a3d10;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            font-family: 'Source Serif 4', Georgia, serif;
+            background: var(--cream);
+            color: var(--body);
+            min-height: 100vh;
+            font-size: 17px;
+            -webkit-text-size-adjust: 100%;
+            scroll-behavior: smooth;
+        }
+
+        /* ─── HEADER ─────────────────────────────── */
+        .header {
+            background: var(--slate);
+            position: relative;
+            overflow: hidden;
+        }
+
+        /* Subtle texture via repeating gradient */
+        .header::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background-image: repeating-linear-gradient(
+                -45deg,
+                transparent,
+                transparent 40px,
+                rgba(255,255,255,0.018) 40px,
+                rgba(255,255,255,0.018) 80px
+            );
+            pointer-events: none;
+        }
+
+        .header-inner {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 48px 40px 44px;
+            position: relative;
+            z-index: 2;
+        }
+
+        .header-top {
+            display: flex;
+            align-items: flex-start;
+            gap: 16px;
+            margin-bottom: 6px;
+        }
+
+        .leaf-mark {
+            font-size: 2.2em;
+            line-height: 1;
+            margin-top: 2px;
+            flex-shrink: 0;
+        }
+
+        .brand-title {
+            font-family: 'Fraunces', Georgia, serif;
+            font-size: 3em;
+            font-weight: 700;
+            color: var(--white);
+            line-height: 1;
+            letter-spacing: -0.5px;
+        }
+
+        .brand-title em {
+            font-style: italic;
+            color: #a8c99a;
+            font-weight: 400;
+        }
+
+        .brand-sub {
+            font-family: 'Source Serif 4', serif;
+            font-size: 1.05em;
+            color: rgba(255,255,255,0.55);
+            font-weight: 300;
+            font-style: italic;
+            margin-top: 8px;
+            padding-left: 60px;
+        }
+
+        /* ─── SEARCH ─────────────────────────────── */
+        .search-band {
+            background: #243447;
+            border-bottom: 3px solid var(--terra);
+        }
+
+        .search-inner {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 28px 40px;
+            display: grid;
+            grid-template-columns: 175px 1fr auto;
+            gap: 14px;
+            align-items: end;
+            position: relative;
+        }
+
+        .field { display: flex; flex-direction: column; gap: 7px; }
+
+        .field label {
+            font-family: 'Source Serif 4', serif;
+            font-size: 0.72em;
+            font-weight: 600;
+            letter-spacing: 1.2px;
+            text-transform: uppercase;
+            color: rgba(255,255,255,0.45);
+        }
+
+        .field input {
+            background: rgba(255,255,255,0.09);
+            border: 1.5px solid rgba(255,255,255,0.14);
+            border-radius: 8px;
+            padding: 14px 18px;
+            font-family: 'Source Serif 4', serif;
+            font-size: 1em;
+            color: var(--white);
+            outline: none;
+            transition: border-color 0.2s, background 0.2s;
+        }
+
+        .field input::placeholder { color: rgba(255,255,255,0.28); font-style: italic; }
+
+        .field input:focus {
+            border-color: #a8c99a;
+            background: rgba(168,201,154,0.08);
+        }
+
+        .go-btn {
+            align-self: flex-end;
+            padding: 14px 30px;
+            background: var(--terra);
+            color: var(--white);
+            border: none;
+            border-radius: 8px;
+            font-family: 'Fraunces', serif;
+            font-size: 1em;
+            font-weight: 600;
+            cursor: pointer;
+            transition: background 0.2s, transform 0.15s;
+            white-space: nowrap;
+            letter-spacing: 0.2px;
+        }
+
+        .go-btn:hover { background: var(--terra2); transform: translateY(-1px); }
+        .go-btn:active { transform: translateY(0); }
+        .go-btn:disabled { background: #4a5a6a; cursor: not-allowed; transform: none; }
+
+        /* ─── SUGGESTIONS ────────────────────────── */
+        .sug-anchor {
+            position: absolute;
+            top: 100%;
+            left: calc(40px + 175px + 14px);
+            right: calc(40px + 30px + 60px + 14px + 14px);
+            z-index: 200;
+            padding-top: 4px;
+        }
+
+        .sug-panel {
+            background: var(--white);
+            border: 1.5px solid var(--line);
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 12px 40px rgba(0,0,0,0.18);
+            display: none;
+        }
+
+        .sug-panel.open { display: block; }
+
+        .sug-head {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 10px 16px 6px;
+            border-bottom: 1px solid var(--line);
+            background: var(--ivory);
+        }
+
+        .sug-head-label {
+            font-family: 'Source Serif 4', serif;
+            font-size: 0.72em;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            color: var(--muted);
+        }
+
+        .sug-head-count { font-size: 0.75em; color: var(--muted); }
+
+        .sug-scroll {
+            max-height: 340px;
+            overflow-y: auto;
+            scrollbar-width: thin;
+            scrollbar-color: var(--parchment) transparent;
+        }
+
+        .sug-item {
+            padding: 12px 16px;
+            cursor: pointer;
+            display: flex;
+            align-items: flex-start;
+            gap: 10px;
+            border-bottom: 1px solid var(--ivory);
+            transition: background 0.12s;
+        }
+
+        .sug-item:last-child { border-bottom: none; }
+        .sug-item:hover { background: var(--cream); }
+
+        .sug-bullet {
+            width: 7px; height: 7px;
+            border-radius: 50%;
+            background: var(--sage);
+            flex-shrink: 0;
+            margin-top: 7px;
+        }
+
+        .sug-name { font-size: 0.95em; color: var(--ink); font-weight: 400; }
+        .sug-sci  { font-size: 0.82em; color: var(--muted); font-style: italic; margin-top: 2px; }
+
+        .sug-loadmore {
+            padding: 11px 16px;
+            text-align: center;
+            font-size: 0.85em;
+            color: var(--slate2);
+            font-style: italic;
+            cursor: pointer;
+            border-top: 1px solid var(--line);
+            background: var(--ivory);
+            transition: background 0.12s;
+        }
+
+        .sug-loadmore:hover { background: var(--parchment); }
+
+        /* ─── CONTENT ────────────────────────────── */
+        .content {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 36px 40px 80px;
+            display: none;
+        }
+
+        .content.show { display: block; }
+
+        /* ─── LOADER ─────────────────────────────── */
+        .loader-card {
+            background: var(--white);
+            border-radius: 16px;
+            border: 1px solid var(--line);
+            padding: 70px 40px;
+            text-align: center;
+        }
+
+        .sprout-wrap {
+            font-size: 4em;
+            margin-bottom: 22px;
+            display: block;
+            line-height: 1;
+            animation: bloomIn 0.45s cubic-bezier(0.34,1.56,0.64,1);
+        }
+
+        @keyframes bloomIn {
+            from { transform: scale(0.3) rotate(-15deg); opacity: 0; }
+            to   { transform: scale(1) rotate(0deg); opacity: 1; }
+        }
+
+        .loader-title {
+            font-family: 'Fraunces', serif;
+            font-size: 1.3em;
+            font-weight: 600;
+            color: var(--slate);
+            margin-bottom: 6px;
+        }
+
+        .loader-sub {
+            font-size: 0.92em;
+            color: var(--muted);
+            font-style: italic;
+            font-weight: 300;
+            margin-bottom: 30px;
+        }
+
+        .prog-track {
+            width: 200px;
+            height: 5px;
+            background: var(--parchment);
+            border-radius: 3px;
+            margin: 0 auto;
+            overflow: hidden;
+        }
+
+        .prog-fill {
+            height: 100%;
+            background: linear-gradient(90deg, var(--sage), #a8c99a);
+            border-radius: 3px;
+            width: 0%;
+            transition: width 0.9s ease;
+        }
+
+        /* ─── RESULT CARD ────────────────────────── */
+        .result-wrap {
+            background: var(--white);
+            border-radius: 16px;
+            border: 1px solid var(--line);
+            overflow: hidden;
+            animation: slideUp 0.4s ease;
+            box-shadow: 0 2px 20px rgba(46,64,87,0.07);
+        }
+
+        @keyframes slideUp {
+            from { opacity: 0; transform: translateY(14px); }
+            to   { opacity: 1; transform: translateY(0); }
+        }
+
+        /* ─── PHOTO BLOCK ────────────────────────── */
+        /* When photo IS present */
+        .photo-present .photo-box {
+            position: relative;
+            width: 100%;
+            height: 320px;
+            overflow: hidden;
+            background: var(--parchment);
+        }
+
+        .photo-present .photo-img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+            opacity: 0;
+            transition: opacity 0.6s ease;
+        }
+
+        .photo-present .photo-img.loaded { opacity: 1; }
+
+        .plant-nameplate {
+            padding: 22px 32px 18px;
+            background: var(--white);
+            border-bottom: 1px solid var(--line);
+        }
+
+        .plant-tag-pill {
+            display: inline-block;
+            background: var(--sage);
+            color: var(--white);
+            padding: 3px 12px;
+            border-radius: 20px;
+            font-size: 0.72em;
+            font-weight: 600;
+            letter-spacing: 0.8px;
+            text-transform: uppercase;
+            margin-bottom: 8px;
+            font-family: 'Source Serif 4', serif;
+        }
+
+        .plant-main-name {
+            font-family: 'Fraunces', serif;
+            font-size: 2.1em;
+            font-weight: 700;
+            color: var(--slate);
+            line-height: 1.1;
+            margin-bottom: 4px;
+        }
+
+        .plant-sci-name {
+            font-style: italic;
+            color: var(--muted);
+            font-size: 1em;
+            font-weight: 300;
+        }
+
+        /* When photo is NOT present — compact nameplate only, no empty box */
+        .photo-absent .photo-box { display: none; }
+
+        .photo-absent .plant-nameplate {
+            background: var(--ivory);
+            padding: 32px 32px 24px;
+        }
+
+        /* ─── ZONE STRIP ─────────────────────────── */
+        .zone-strip {
+            background: var(--slate);
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+        }
+
+        .zc {
+            padding: 14px 18px;
+            border-right: 1px solid rgba(255,255,255,0.1);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .zc:last-child { border-right: none; }
+
+        .zc-icon {
+            font-size: 1.1em;
+            flex-shrink: 0;
+            line-height: 1;
+        }
+
+        .zc-lbl {
+            font-family: 'Source Serif 4', serif;
+            font-size: 0.62em;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            color: rgba(255,255,255,0.45);
+            font-weight: 600;
+            margin-bottom: 2px;
+        }
+
+        .zc-val {
+            font-family: 'Fraunces', serif;
+            font-size: 0.95em;
+            font-weight: 600;
+            color: var(--white);
+        }
+
+        /* ─── COMPAT ─────────────────────────────── */
+        .compat-bar {
+            display: flex;
+            align-items: flex-start;
+            gap: 10px;
+            padding: 14px 20px;
+            font-size: 0.9em;
+            border-bottom: 1px solid var(--line);
+        }
+
+        .compat-bar.ok   { background: var(--ok-bg);   border-left: 4px solid var(--ok-line);   color: var(--ok-text); }
+        .compat-bar.warn { background: var(--warn-bg);  border-left: 4px solid var(--warn-line);  color: var(--warn-text); }
+        .compat-bar strong { font-weight: 600; }
+
+        /* ─── QUICK STATS BAR ────────────────────── */
+        .quick-stats {
+            padding: 18px 28px;
+            background: var(--cream);
+            border-bottom: 1px solid var(--line);
+            display: flex;
+            flex-wrap: wrap;
+            gap: 12px;
+            align-items: center;
+        }
+
+        .stat-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            padding: 8px 14px;
+            background: var(--white);
+            border: 1.5px solid var(--line);
+            border-radius: 20px;
+            font-size: 0.82em;
+            font-weight: 500;
+            color: var(--slate);
+            white-space: nowrap;
+        }
+
+        .stat-badge .stat-icon {
+            font-size: 1.1em;
+            line-height: 1;
+        }
+
+        .stat-badge .stat-label {
+            font-weight: 300;
+            color: var(--muted);
+            margin-right: 2px;
+        }
+
+        .stat-badge .stat-value {
+            font-weight: 600;
+            color: var(--slate);
+        }
+
+        /* ─── WARNINGS ───────────────────────────── */
+        .warning-bar {
+            padding: 14px 20px;
+            background: #fff4e6;
+            border-left: 4px solid #fb923c;
+            border-bottom: 1px solid var(--line);
+            display: flex;
+            align-items: flex-start;
+            gap: 10px;
+            font-size: 0.9em;
+            color: #9a3412;
+        }
+
+        .warning-bar.danger {
+            background: #fee;
+            border-left-color: #dc2626;
+            color: #7f1d1d;
+        }
+
+        .warning-bar strong { font-weight: 600; }
+
+        /* ─── TABS ───────────────────────────────── */
+        .tab-row {
+            display: flex;
+            gap: 8px;
+            overflow-x: auto;
+            scrollbar-width: none;
+            background: var(--ivory);
+            padding: 16px 20px;
+            -webkit-overflow-scrolling: touch;
+            border-bottom: 1px solid var(--line);
+        }
+
+        .tab-row::-webkit-scrollbar { display: none; }
+
+        .tab-btn {
+            padding: 12px 20px;
+            font-family: 'Source Serif 4', serif;
+            font-size: 0.85em;
+            font-weight: 600;
+            color: var(--muted);
+            cursor: pointer;
+            white-space: nowrap;
+            transition: all 0.2s;
+            letter-spacing: 0.3px;
+            border-radius: 20px;
+            background: transparent;
+            border: 1.5px solid transparent;
+        }
+
+        .tab-btn:hover { 
+            color: var(--slate); 
+            background: rgba(46, 64, 87, 0.05);
+        }
+        
+        .tab-btn.on { 
+            color: var(--white); 
+            background: var(--slate);
+            border-color: var(--slate);
+        }
+
+        /* ─── PANELS ─────────────────────────────── */
+        .panel { display: none; padding: 32px; animation: fadeIn 0.22s ease; }
+        .panel.on { display: block; }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(5px); }
+            to   { opacity: 1; transform: translateY(0); }
+        }
+
+        /* OVERVIEW */
+        .overview-text {
+            font-size: 1.05em;
+            color: var(--body);
+            line-height: 1.85;
+            font-weight: 300;
+            margin-bottom: 24px;
+            max-width: 660px;
+        }
+
+        .zone-note {
+            background: var(--slate);
+            border-radius: 10px;
+            padding: 18px 22px;
+            display: flex;
+            gap: 12px;
+            align-items: flex-start;
+        }
+
+        .zone-note-ico { font-size: 1.2em; flex-shrink: 0; }
+
+        .zone-note-lbl {
+            font-family: 'Source Serif 4', serif;
+            font-size: 0.7em;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1.2px;
+            color: #a8c99a;
+            margin-bottom: 5px;
+        }
+
+        .zone-note-txt {
+            font-size: 0.92em;
+            color: rgba(255,255,255,0.68);
+            line-height: 1.65;
+            font-weight: 300;
+            font-style: italic;
+        }
+
+        /* CONDITIONS */
+        .cond-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 14px;
+        }
+
+        .cond-card {
+            border: 1.5px solid var(--line);
+            border-radius: 10px;
+            padding: 18px;
+            background: var(--cream);
+            transition: border-color 0.18s, transform 0.18s;
+        }
+
+        .cond-card:hover { border-color: var(--slate3); transform: translateY(-2px); }
+
+        .cond-top {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            margin-bottom: 9px;
+        }
+
+        .cond-ico {
+            width: 30px; height: 30px;
+            background: var(--slate);
+            border-radius: 7px;
+            display: flex; align-items: center; justify-content: center;
+            font-size: 0.85em;
+        }
+
+        .cond-lbl {
+            font-family: 'Source Serif 4', serif;
+            font-size: 0.68em;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            color: var(--muted);
+        }
+
+        .cond-val {
+            font-size: 0.92em;
+            color: var(--body);
+            line-height: 1.55;
+        }
+
+        /* CALENDAR */
+        .cal-stack { display: flex; flex-direction: column; gap: 10px; }
+
+        .cal-card {
+            border: 1.5px solid var(--line);
+            border-radius: 10px;
+            overflow: hidden;
+            transition: border-color 0.18s;
+        }
+
+        .cal-card:hover { border-color: var(--slate3); }
+
+        .cal-head {
+            background: var(--ivory);
+            padding: 12px 18px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            border-bottom: 1px solid var(--line);
+        }
+
+        .cal-ico {
+            width: 30px; height: 30px;
+            border-radius: 7px;
+            display: flex; align-items: center; justify-content: center;
+            font-size: 0.88em;
+            flex-shrink: 0;
+        }
+
+        .cal-ico.pl { background: #e4f5e2; }
+        .cal-ico.wa { background: #e2eef9; }
+        .cal-ico.fe { background: #faf4e0; }
+        .cal-ico.pr { background: #f5e8f2; }
+        .cal-ico.ha { background: #faeee5; }
+
+        .cal-title {
+            font-family: 'Source Serif 4', serif;
+            font-size: 0.82em;
+            font-weight: 600;
+            color: var(--slate);
+            letter-spacing: 0.3px;
+        }
+
+        .cal-body {
+            padding: 15px 18px;
+            font-size: 0.92em;
+            color: var(--body);
+            line-height: 1.75;
+            font-weight: 300;
+        }
+
+        /* PESTS */
+        .pest-stack { display: flex; flex-direction: column; }
+
+        .pest-row {
+            display: flex;
+            gap: 14px;
+            padding: 17px 0;
+            border-bottom: 1px solid var(--line);
+            align-items: flex-start;
+        }
+
+        .pest-row:last-child { border-bottom: none; }
+
+        .pest-ico {
+            width: 38px; height: 38px;
+            background: var(--warn-bg);
+            border: 1px solid var(--warn-line);
+            border-radius: 8px;
+            display: flex; align-items: center; justify-content: center;
+            font-size: 1em;
+            flex-shrink: 0;
+        }
+
+        .pest-name {
+            font-family: 'Fraunces', serif;
+            font-size: 1em;
+            font-weight: 600;
+            color: var(--slate);
+            margin-bottom: 4px;
+        }
+
+        .pest-desc {
+            font-size: 0.9em;
+            color: var(--body);
+            line-height: 1.65;
+            font-weight: 300;
+        }
+
+        /* TIPS */
+        .tips-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 16px;
+        }
+
+        .tip-card {
+            border: 2px solid var(--line);
+            border-radius: 12px;
+            padding: 22px;
+            background: var(--white);
+            display: flex;
+            gap: 16px;
+            align-items: flex-start;
+            transition: all 0.2s;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+        }
+
+        .tip-card:hover { 
+            border-color: var(--terra); 
+            transform: translateY(-3px);
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+        }
+
+        .tip-num {
+            font-family: 'Fraunces', serif;
+            font-size: 2em;
+            font-weight: 800;
+            color: var(--slate);
+            line-height: 1;
+            flex-shrink: 0;
+            width: 42px;
+            background: var(--ivory);
+            border-radius: 8px;
+            padding: 10px 8px;
+            text-align: center;
+        }
+
+        .tip-text {
+            font-size: 0.93em;
+            color: var(--body);
+            line-height: 1.65;
+            font-weight: 300;
+            padding-top: 6px;
+        }
+
+        /* ERROR */
+        .err-card {
+            background: #fdf2f2;
+            border: 1.5px solid #e8b0b0;
+            border-radius: 10px;
+            padding: 26px;
+        }
+
+        .err-card strong {
+            display: block;
+            font-family: 'Fraunces', serif;
+            font-size: 1.1em;
+            color: #8a2020;
+            margin-bottom: 7px;
+        }
+
+        .err-card p { font-size: 0.92em; color: #6a3030; }
+
+        /* ─── RESPONSIVE ─────────────────────────── */
+
+        /* Touch devices: bigger tap targets everywhere */
+        @media (hover: none) and (pointer: coarse) {
+            .go-btn       { padding: 17px 30px; font-size: 1.05em; }
+            .field input  { padding: 16px 18px; font-size: 1.05em; }
+            .tab-btn      { padding: 18px 20px; font-size: 0.88em; }
+            .sug-item     { padding: 15px 16px; }
+            .cond-card:hover, .cal-card:hover, .tip-card:hover { transform: none; }
+        }
+
+        /* ── TABLET (481px – 820px) ── */
+        @media (max-width: 820px) {
+            .header-inner { padding: 38px 28px 34px; }
+            .brand-title  { font-size: 2.6em; }
+
+            .search-inner {
+                padding: 22px 28px;
+                grid-template-columns: 160px 1fr auto;
+                gap: 12px;
+            }
+
+            .sug-anchor {
+                left: calc(28px + 160px + 12px);
+                right: calc(28px + 110px + 12px);
+            }
+
+            .content { padding: 28px 28px 70px; }
+
+            .photo-present .photo-box { height: 260px; }
+            .plant-main-name          { font-size: 1.9em; }
+            .plant-nameplate          { padding: 20px 24px 16px; }
+
+            .zone-strip { grid-template-columns: repeat(4,1fr); }
+
+            .panel      { padding: 26px 24px; }
+            .cond-grid  { grid-template-columns: repeat(2, 1fr); }
+            .tips-grid  { grid-template-columns: 1fr 1fr; }
+            .tab-btn    { padding: 16px 16px; font-size: 0.82em; }
+        }
+
+        /* ── PHONE (≤ 600px) ── */
+        @media (max-width: 600px) {
+            body { font-size: 16px; }
+
+            /* Header */
+            .header-inner  { padding: 28px 18px 24px; }
+            .brand-title   { font-size: 2.1em; }
+            .brand-sub     { padding-left: 0; font-size: 0.92em; margin-top: 6px; }
+            .leaf-mark     { font-size: 1.8em; }
+
+            /* Search — stack vertically */
+            .search-inner {
+                padding: 18px;
+                grid-template-columns: 1fr;
+                gap: 14px;
+            }
+
+            /* Suggestions fill the screen width */
+            .sug-anchor {
+                position: fixed;
+                left: 0; right: 0;
+                top: auto;
+                padding: 0 12px;
+                z-index: 300;
+            }
+
+            .sug-panel {
+                border-radius: 12px;
+                box-shadow: 0 16px 48px rgba(0,0,0,0.28);
+            }
+
+            .sug-scroll { max-height: 280px; }
+
+            /* Inputs — large and easy to tap */
+            .field input {
+                padding: 17px 18px;
+                font-size: 1.05em;
+                border-radius: 10px;
+            }
+
+            .go-btn {
+                width: 100%;
+                padding: 17px;
+                font-size: 1.1em;
+                border-radius: 10px;
+                letter-spacing: 0.3px;
+            }
+
+            /* Photo */
+            .photo-present .photo-box { height: 200px; }
+            .plant-nameplate { padding: 16px 18px 14px; }
+            .plant-main-name { font-size: 1.6em; letter-spacing: -0.3px; }
+            .plant-sci-name  { font-size: 0.9em; }
+            .plant-tag-pill  { font-size: 0.68em; margin-bottom: 6px; }
+
+            /* Zone strip: 2×2 grid */
+            .zone-strip {
+                grid-template-columns: 1fr 1fr;
+            }
+            .zc { padding: 14px 14px; gap: 8px; }
+            .zc:nth-child(1),
+            .zc:nth-child(2) { border-bottom: 1px solid rgba(255,255,255,0.1); }
+            .zc:nth-child(2) { border-right: none; }
+            .zc-lbl { font-size: 0.58em; }
+            .zc-val { font-size: 0.88em; }
+            .zc-icon { font-size: 1em; }
+
+            /* Compat bar */
+            .compat-bar { padding: 13px 16px; font-size: 0.88em; flex-wrap: wrap; gap: 8px; }
+
+            /* Quick stats on mobile */
+            .quick-stats { padding: 14px 16px; gap: 8px; }
+            .stat-badge { font-size: 0.76em; padding: 7px 11px; }
+
+            /* Warnings on mobile */
+            .warning-bar { padding: 12px 16px; font-size: 0.85em; }
+
+            /* Tab rail — sticky on mobile with wrapping */
+            .tab-row { 
+                position: sticky;
+                top: 0;
+                z-index: 100;
+                padding: 12px 14px;
+                gap: 6px;
+                background: var(--ivory);
+                box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+                flex-wrap: wrap;  /* Allow tabs to wrap to multiple rows */
+                overflow-x: visible;  /* No horizontal scroll */
+            }
+            
+            .tab-btn { 
+                padding: 10px 14px; 
+                font-size: 0.74em; 
+                letter-spacing: 0;
+                flex-shrink: 1;  /* Allow shrinking to fit */
+                min-width: fit-content;
+            }
+
+            /* Panels */
+            .panel { padding: 20px 16px; }
+
+            /* Conditions — single column on phone */
+            .cond-grid { grid-template-columns: 1fr; gap: 10px; }
+            .cond-card { padding: 15px; }
+            .cond-val  { font-size: 0.95em; }
+
+            /* Calendar */
+            .cal-card .cal-head { padding: 12px 15px; }
+            .cal-card .cal-body { padding: 13px 15px; font-size: 0.93em; }
+            .cal-title { font-size: 0.8em; }
+
+            /* Overview */
+            .overview-text { font-size: 1em; line-height: 1.8; }
+            .zone-note { padding: 16px 18px; }
+            .zone-note-txt { font-size: 0.9em; }
+
+            /* Pests */
+            .pest-ico  { width: 34px; height: 34px; font-size: 0.9em; }
+            .pest-name { font-size: 0.95em; }
+            .pest-desc { font-size: 0.88em; }
+
+            /* Tips — single column */
+            .tips-grid { grid-template-columns: 1fr; gap: 10px; }
+            .tip-card  { padding: 16px; }
+            .tip-num   { font-size: 1.5em; }
+            .tip-text  { font-size: 0.9em; }
+
+            /* Loader */
+            .loader-card { padding: 50px 24px; }
+            .sprout-wrap { font-size: 3.2em; }
+            .loader-title { font-size: 1.1em; }
+
+            /* Error */
+            .err-card { padding: 20px; }
+        }
+
+        /* ── VERY SMALL PHONES (≤ 360px) ── */
+        @media (max-width: 360px) {
+            .brand-title { font-size: 1.8em; }
+            .tab-btn     { padding: 15px 10px; font-size: 0.7em; }
+            .plant-main-name { font-size: 1.4em; }
+            .zone-strip  { grid-template-columns: 1fr 1fr; }
+        }
+    </style>
+</head>
+<body>
+
+<!-- HEADER -->
+<header class="header">
+    <div class="header-inner">
+        <div class="header-top">
+            <div class="leaf-mark">🌿</div>
+            <div class="brand-title">Garden <em>Guide</em></div>
+        </div>
+        <div class="brand-sub">Zone-specific plant care for every gardener</div>
+    </div>
+</header>
+
+<!-- SEARCH -->
+<div class="search-band">
+    <div class="search-inner">
+        <div class="field">
+            <label for="zipcode">Your Zip Code</label>
+            <input id="zipcode" type="text" placeholder="e.g. 98252" maxlength="5" inputmode="numeric" autocomplete="off">
+        </div>
+        <div class="field">
+            <label for="plant">Plant Name</label>
+            <input id="plant" type="text" placeholder="e.g. Tomato, Hosta, Japanese Maple…" autocomplete="off">
+        </div>
+        <button class="go-btn" id="goBtn" onclick="doSearch()" disabled>Get My Guide</button>
+
+        <div class="sug-anchor">
+            <div class="sug-panel" id="sugPanel">
+                <div class="sug-head">
+                    <span class="sug-head-label">Matching Plants</span>
+                    <span class="sug-head-count" id="sugCount"></span>
+                </div>
+                <div class="sug-scroll" id="sugList"></div>
+                <div class="sug-loadmore" id="sugMore" style="display:none" onclick="showAllSug()">Show all results…</div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- CONTENT -->
+<div class="content" id="content">
+    <div id="output"></div>
+</div>
+
+<script>
+const PKEY = 'sk-S2u5698571e0dc12714702';
+// Claude API key is now securely stored in Cloudflare Worker
+
+let sugTimer = null;
+let pickedId = null;
+let allSugs  = [];
+const SHOW   = 12;
+
+// ── ZONE DATA ────────────────────────────────────────────────────────
+const ZZ = {'980':'9a','981':'9a','982':'8b','983':'8a','984':'8a','985':'8a','986':'8b','988':'5b','989':'5b','990':'6a','991':'6a','992':'6a','993':'6b','994':'7a','970':'9a','971':'9a','972':'9a','973':'8b','974':'8b','975':'8b','976':'8a','977':'7b','978':'7a','979':'7b','900':'10b','901':'10b','902':'10b','903':'10a','904':'10b','905':'10b','906':'10a','907':'10b','908':'10b','910':'10b','911':'10b','912':'10b','913':'10a','914':'10a','915':'10a','916':'9b','917':'9b','918':'9b','919':'10b','920':'10b','921':'10a','922':'10a','923':'10a','924':'9b','925':'9b','926':'9b','927':'10a','928':'10a','930':'9b','931':'9b','932':'9b','933':'9a','934':'9b','935':'9a','936':'9a','937':'9a','938':'9a','939':'9a','940':'10b','941':'10b','942':'9b','943':'9b','944':'9b','945':'9b','946':'9b','947':'9b','948':'9b','949':'9b','950':'9b','951':'9b','952':'9b','953':'9b','954':'9b','955':'9a','956':'9a','957':'9a','958':'9a','959':'8b','960':'7b','961':'7a','889':'9a','890':'9a','891':'8b','893':'7a','894':'6b','895':'6b','897':'7a','898':'5b','850':'9b','851':'9b','852':'9b','853':'9a','854':'9a','855':'8a','856':'8a','857':'8a','859':'8a','860':'8a','863':'7b','864':'7b','865':'7a','840':'7b','841':'7b','842':'6b','843':'5b','844':'5a','845':'5a','846':'5b','847':'5b','800':'6b','801':'6b','802':'5b','803':'5a','804':'5b','805':'5b','806':'5b','807':'4b','808':'5b','809':'5b','810':'6a','811':'6a','812':'5b','813':'5b','814':'5a','815':'5a','816':'5a','870':'7b','871':'7b','872':'7b','873':'6b','874':'6a','875':'6b','877':'7a','878':'7a','879':'7b','590':'4b','591':'4b','592':'4a','593':'4b','594':'4b','595':'4a','596':'3b','597':'4b','598':'4a','599':'4a','832':'7b','833':'6b','834':'5b','835':'5b','836':'6a','837':'5b','838':'5a','820':'4a','821':'4a','822':'4a','823':'4a','824':'4a','825':'4b','826':'4a','827':'4a','828':'4b','829':'4a','830':'5a','831':'5a','580':'3b','581':'3b','582':'4a','583':'3b','584':'3b','585':'3a','586':'3a','587':'3b','588':'3b','570':'4b','571':'4b','572':'5a','573':'5a','574':'4b','575':'4a','576':'4b','577':'4b','680':'5b','681':'5b','683':'5b','684':'5b','685':'5b','686':'5a','687':'5a','688':'5a','689':'5a','690':'5b','691':'5b','692':'5a','693':'5a','660':'6a','661':'6a','662':'6a','664':'6a','665':'6a','666':'6a','667':'6b','668':'5b','669':'5b','670':'6a','671':'6a','672':'6a','673':'6b','674':'6b','675':'6b','676':'6b','677':'5b','678':'5b','679':'6a','550':'4b','551':'4b','553':'5a','554':'4b','555':'4b','556':'4a','557':'4a','558':'3b','559':'4b','560':'4a','561':'4a','562':'4b','563':'4b','564':'4b','565':'4b','566':'3b','567':'3b','500':'5a','501':'5a','502':'5a','503':'5a','504':'5a','505':'4b','506':'5a','507':'5a','508':'4b','510':'5a','511':'5a','512':'5a','513':'5a','514':'5a','515':'5a','516':'5a','520':'5b','521':'5b','522':'5b','523':'5b','524':'5b','525':'5b','526':'5b','527':'5b','528':'5b','530':'5a','531':'5a','532':'5b','534':'5a','535':'4b','537':'5a','538':'5a','539':'5a','540':'4b','541':'5a','542':'5a','543':'5a','544':'4b','545':'4b','546':'4b','547':'4b','548':'4b','549':'5a','600':'6a','601':'6a','602':'6a','603':'5b','604':'5b','605':'5b','606':'6a','607':'5b','608':'5b','609':'5b','610':'5b','611':'5b','612':'5b','613':'5b','614':'5b','615':'5b','616':'5b','617':'5b','618':'6a','619':'6a','620':'6a','622':'6a','623':'6a','624':'6b','625':'6a','626':'6a','627':'6a','628':'6a','629':'6a','480':'6a','481':'6a','482':'5b','483':'5b','484':'5b','485':'5b','486':'5b','487':'5b','488':'5b','489':'5b','490':'5b','491':'5b','492':'5b','493':'5b','494':'5b','495':'5b','496':'5a','497':'5a','498':'4b','499':'4b','430':'6a','431':'6a','432':'5b','433':'5b','434':'5b','435':'5b','436':'5b','437':'5b','438':'5b','439':'5b','440':'6a','441':'6a','442':'6a','443':'6a','444':'6a','445':'6a','446':'6a','447':'6a','448':'5b','449':'5b','450':'6b','451':'6b','452':'6b','453':'6a','454':'6a','455':'5b','456':'6a','457':'6a','458':'6a','460':'6a','461':'6a','462':'6a','463':'5b','464':'5b','465':'5b','466':'5b','467':'5b','468':'5b','469':'5b','470':'6a','471':'6a','472':'6a','473':'6a','474':'6b','475':'6b','476':'6b','477':'6b','478':'6a','479':'6a','400':'6b','401':'6b','402':'6b','403':'6a','404':'6a','405':'6a','406':'6a','407':'6a','408':'6a','409':'6a','410':'6b','411':'6b','412':'6b','413':'6b','414':'6b','415':'6b','416':'6b','417':'6b','418':'6b','370':'7a','371':'7a','372':'7a','373':'7a','374':'7b','375':'7a','376':'7a','377':'7a','378':'7a','379':'7b','380':'7b','381':'7b','382':'7b','383':'6b','384':'6b','385':'6b','630':'6a','631':'6a','633':'6a','634':'6a','635':'6a','636':'6b','637':'6a','638':'6a','639':'6a','640':'6a','641':'6a','644':'5b','645':'5b','646':'5b','647':'5b','648':'5b','649':'6a','650':'6a','651':'6a','652':'6a','653':'6a','654':'6b','655':'6b','656':'6b','657':'6b','658':'6b','716':'7b','717':'7b','718':'7b','719':'7a','720':'7b','721':'7b','722':'7b','723':'7a','724':'6b','725':'7a','726':'7a','727':'7a','728':'7a','729':'7b','700':'9a','701':'9a','703':'9b','704':'9a','705':'8b','706':'8b','707':'9a','708':'9a','710':'8b','711':'8b','712':'8b','713':'8b','714':'8b','386':'8a','387':'8a','388':'8a','389':'8a','390':'8b','391':'8b','392':'8b','393':'8a','394':'8a','395':'8a','396':'8a','397':'8a','350':'8a','351':'7b','352':'7b','354':'7b','355':'7b','356':'7b','357':'7b','358':'7b','359':'8a','360':'8a','361':'8a','362':'8a','363':'8a','364':'8b','365':'8b','366':'8b','367':'8b','368':'8b','369':'8b','300':'8a','301':'8a','302':'8b','303':'8a','304':'7b','305':'7b','306':'7b','307':'7b','308':'8a','309':'8b','310':'8b','311':'8a','312':'8b','313':'8b','314':'8b','315':'8b','316':'8b','317':'8a','318':'8a','319':'8b','290':'8a','291':'8a','292':'8a','293':'7b','294':'8a','295':'8a','296':'7b','297':'7b','298':'7b','299':'8b','270':'7b','271':'7b','272':'7b','273':'7b','274':'7a','275':'7b','276':'7b','277':'7b','278':'7b','279':'8a','280':'7b','281':'7b','282':'7b','283':'7b','284':'8a','285':'8a','286':'7a','287':'7a','288':'7b','289':'8a','200':'7a','201':'7a','202':'7a','203':'7a','204':'7a','205':'7a','206':'7a','207':'7a','208':'7a','209':'7a','220':'7a','221':'7a','222':'7a','223':'7a','224':'6b','225':'6b','226':'7a','227':'7a','228':'7a','229':'7b','230':'7b','231':'7b','232':'7b','233':'8a','234':'8a','235':'8a','236':'7b','237':'7b','238':'7b','239':'7b','240':'6b','241':'6b','242':'6a','243':'6a','244':'6b','245':'6b','246':'6b','247':'6a','248':'6a','249':'6a','250':'6b','251':'6b','252':'6b','253':'6b','254':'6a','255':'6a','256':'6a','257':'6a','258':'6b','259':'6b','260':'5b','261':'5b','262':'5b','263':'5b','264':'5b','265':'5b','266':'6a','267':'6a','268':'6a','210':'7a','211':'7a','212':'7a','214':'7a','215':'6b','216':'7a','217':'6b','218':'6b','219':'7a','197':'7b','198':'7b','199':'7b','150':'6a','151':'6a','152':'6a','153':'6a','154':'6a','155':'6a','156':'5b','157':'6a','158':'6a','159':'5b','160':'5b','161':'5b','162':'5b','163':'5b','164':'5b','165':'5b','166':'6a','167':'5b','168':'6a','169':'6a','170':'6b','171':'6b','172':'6b','173':'6b','174':'6b','175':'6b','176':'6b','177':'6b','178':'6b','179':'6b','180':'6b','181':'6b','182':'6a','183':'6b','184':'6a','185':'6a','186':'6a','187':'6b','188':'6b','189':'6b','190':'7a','191':'7a','192':'7a','193':'6b','194':'6b','195':'7a','196':'7a','070':'7a','071':'7a','072':'7a','073':'7a','074':'6b','075':'6b','076':'7a','077':'7b','078':'6b','079':'6b','080':'7a','081':'7a','082':'7b','083':'7b','084':'7a','085':'7a','086':'7a','087':'7a','088':'7a','089':'7a','100':'7b','101':'7b','102':'7b','103':'7a','104':'7a','105':'6b','106':'6b','107':'6b','108':'6b','109':'6b','110':'7b','111':'7b','112':'7b','113':'7b','114':'7b','115':'7a','116':'7a','117':'7a','118':'7a','119':'7a','120':'5b','121':'5b','122':'5b','123':'5a','124':'6a','125':'6a','126':'5b','127':'5b','128':'5a','129':'5a','130':'5b','131':'5b','132':'5b','133':'5a','134':'5a','135':'5a','136':'5b','137':'5b','138':'5b','139':'5b','140':'6a','141':'6a','142':'6a','143':'5b','144':'5b','145':'5b','146':'6a','147':'5b','148':'5b','149':'5a','060':'7a','061':'6b','062':'7a','063':'7a','064':'6b','065':'6a','066':'6b','067':'6a','068':'7a','069':'7a','028':'7a','029':'6b','010':'6a','011':'5b','012':'5b','013':'5b','014':'6a','015':'6a','016':'6a','017':'6b','018':'6b','019':'7a','020':'7a','021':'7a','022':'7a','023':'7a','024':'7a','025':'7a','026':'7a','027':'6b','050':'5b','051':'5a','052':'5a','053':'4b','054':'4b','055':'4b','056':'4b','057':'5a','058':'4b','059':'4b','030':'6a','031':'6a','032':'5b','033':'5b','034':'5a','035':'5a','036':'5a','037':'4b','038':'5b','039':'6a','040':'6a','041':'6a','042':'5b','043':'5b','044':'5a','045':'5a','046':'5a','047':'4b','048':'4b','049':'5a','320':'9a','321':'9b','322':'9a','323':'8b','324':'8b','325':'8b','326':'8b','327':'9b','328':'9b','329':'9b','330':'10b','331':'10b','332':'10b','333':'10b','334':'10a','335':'10a','336':'9b','337':'9b','338':'9b','339':'10a','340':'11a','341':'10b','342':'9b','344':'10a','346':'9b','347':'9b','349':'10a','750':'8a','751':'8a','752':'8a','753':'8a','754':'7b','755':'7b','756':'7b','757':'7b','758':'7b','759':'8a','760':'8a','761':'7b','762':'8a','763':'7b','764':'7b','765':'8a','766':'8a','767':'8a','768':'7b','769':'8a','770':'9a','771':'9a','772':'9a','773':'9a','774':'9a','775':'9a','776':'9a','777':'9a','778':'9a','779':'9a','780':'8b','781':'8b','782':'8b','783':'9a','784':'9a','785':'8b','786':'8b','787':'8b','788':'9a','789':'9a','790':'7a','791':'7a','792':'6b','793':'7a','794':'7b','795':'7b','796':'7a','797':'7a','798':'7b','799':'7b'};
+const FD = {'1a':{l:'Jun 15',f:'Jul 31',t:'Below -60°F'},'2a':{l:'May 15',f:'Sep 1',t:'-50 to -55°F'},'2b':{l:'May 1',f:'Sep 15',t:'-45 to -50°F'},'3a':{l:'May 15',f:'Sep 15',t:'-40 to -45°F'},'3b':{l:'May 1',f:'Oct 1',t:'-35 to -40°F'},'4a':{l:'May 1',f:'Oct 1',t:'-30 to -35°F'},'4b':{l:'Apr 15',f:'Oct 15',t:'-25 to -30°F'},'5a':{l:'Apr 30',f:'Oct 15',t:'-20 to -25°F'},'5b':{l:'Apr 15',f:'Oct 30',t:'-15 to -20°F'},'6a':{l:'Apr 15',f:'Nov 1',t:'-10 to -15°F'},'6b':{l:'Apr 1',f:'Nov 15',t:'-5 to -10°F'},'7a':{l:'Apr 15',f:'Nov 1',t:'0 to -5°F'},'7b':{l:'Apr 1',f:'Nov 15',t:'5 to 0°F'},'8a':{l:'Mar 20',f:'Nov 20',t:'10 to 15°F'},'8b':{l:'Mar 10',f:'Dec 1',t:'15 to 20°F'},'9a':{l:'Feb 28',f:'Dec 10',t:'20 to 25°F'},'9b':{l:'Feb 15',f:'Dec 15',t:'25 to 30°F'},'10a':{l:'Jan 30',f:'Dec 30',t:'30 to 35°F'},'10b':{l:'Jan 15',f:'Year-round',t:'35 to 40°F'},'11a':{l:'Year-round',f:'Year-round',t:'40 to 45°F'},'12a':{l:'Year-round',f:'Year-round',t:'50°F+'}};
+
+function getZone(zip) { return ZZ[zip.substring(0,3)] || '7a'; }
+function getFrost(z)  { return FD[z] || FD['7a']; }
+
+// ── SUGGESTIONS ──────────────────────────────────────────────────────
+document.getElementById('plant').addEventListener('input', function(e) {
+    clearTimeout(sugTimer);
+    const q = e.target.value.trim();
+    
+    // Disable button until they pick from suggestions
+    document.getElementById('goBtn').disabled = true;
+    pickedId = null;
+    
+    if (q.length < 2) { closeSug(); return; }
+    sugTimer = setTimeout(() => fetchSug(q), 360);
+});
+
+// Calculate relevance score for sorting suggestions
+function scoreMatch(plantName, query) {
+    const name = plantName.toLowerCase();
+    const q = query.toLowerCase();
+    
+    // Exact match = highest priority
+    if (name === q) return 1000;
+    
+    // Starts with query = very high priority
+    if (name.startsWith(q)) return 500;
+    
+    // Query is at start of a word in the name
+    const words = name.split(/[\s-]+/);
+    for (let word of words) {
+        if (word.startsWith(q)) return 400;
+    }
+    
+    // Contains query as a substring
+    if (name.includes(q)) return 200;
+    
+    // Query words all appear somewhere in name
+    const qWords = q.split(/\s+/);
+    if (qWords.every(qw => name.includes(qw))) return 100;
+    
+    // Partial word matches (for typos/abbreviations)
+    let partialScore = 0;
+    for (let qw of qWords) {
+        for (let word of words) {
+            if (word.includes(qw) || qw.includes(word)) {
+                partialScore += 10;
+            }
+        }
+    }
+    
+    return partialScore;
+}
+
+async function fetchSug(q) {
+    try {
+        const [r1, r2] = await Promise.all([
+            fetch(`https://perenual.com/api/species-list?key=${PKEY}&q=${encodeURIComponent(q)}&page=1`),
+            fetch(`https://perenual.com/api/species-list?key=${PKEY}&q=${encodeURIComponent(q)}&page=2`)
+        ]);
+        const [d1, d2] = await Promise.all([r1.json(), r2.json()]);
+        const seen = new Set();
+        allSugs = [...(d1.data||[]), ...(d2.data||[])].filter(p => {
+            if (seen.has(p.id)) return false;
+            seen.add(p.id); return true;
+        });
+        
+        // Sort by relevance score (highest first)
+        allSugs.sort((a, b) => {
+            const scoreA = scoreMatch(a.common_name, q);
+            const scoreB = scoreMatch(b.common_name, q);
+            return scoreB - scoreA;
+        });
+        
+        renderSug(SHOW);
+    } catch { closeSug(); }
+}
+
+function renderSug(limit) {
+    if (!allSugs.length) { closeSug(); return; }
+    const slice = allSugs.slice(0, limit);
+    document.getElementById('sugCount').textContent = allSugs.length + ' results';
+    document.getElementById('sugList').innerHTML = slice.map(p => {
+        const sci = p.scientific_name?.[0] || '';
+        const nm  = p.common_name.replace(/'/g,"\\'");
+        return `<div class="sug-item" onclick="pickSug(${p.id},'${nm}')">
+            <div class="sug-bullet"></div>
+            <div>
+                <div class="sug-name">${p.common_name}</div>
+                ${sci ? `<div class="sug-sci">${sci}</div>` : ''}
+            </div>
+        </div>`;
+    }).join('');
+    document.getElementById('sugMore').style.display = allSugs.length > limit ? 'block' : 'none';
+    document.getElementById('sugPanel').classList.add('open');
+}
+
+function showAllSug()  { renderSug(allSugs.length); }
+function closeSug()    { document.getElementById('sugPanel').classList.remove('open'); }
+function pickSug(id, name) { 
+    pickedId = id; 
+    document.getElementById('plant').value = name; 
+    document.getElementById('goBtn').disabled = false;  // Enable the button
+    closeSug(); 
+}
+
+document.addEventListener('click', e => {
+    if (!e.target.closest('.search-inner')) closeSug();
+});
+
+// ── STAGED LOADER ─────────────────────────────────────────────────────
+const STAGES = [
+    { e:'🌱', t:'Looking up your growing zone…',          s:'Finding frost dates and climate data for your area' },
+    { e:'🌿', t:'Gathering plant information…',            s:'Searching our plant library for photos and botanical facts' },
+    { e:'🌳', t:'Writing your personalized care guide…',   s:'Tailoring advice to your specific zone and frost dates' },
+];
+
+function showLoader() {
+    const c = document.getElementById('content');
+    c.className = 'content show';
+    document.getElementById('output').innerHTML = `
+        <div class="loader-card">
+            <span class="sprout-wrap" id="sEmo">${STAGES[0].e}</span>
+            <div class="loader-title" id="sTitle">${STAGES[0].t}</div>
+            <div class="loader-sub"   id="sSub">${STAGES[0].s}</div>
+            <div class="prog-track"><div class="prog-fill" id="pFill"></div></div>
+        </div>`;
+    c.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    setStage(0);
+    const t1 = setTimeout(() => setStage(1), 3200);
+    const t2 = setTimeout(() => setStage(2), 7500);
+    return () => { clearTimeout(t1); clearTimeout(t2); };
+}
+
+function setStage(i) {
+    const el = document.getElementById('sEmo');
+    if (!el) return;
+    el.style.animation = 'none';
+    void el.offsetWidth;
+    el.style.animation = 'bloomIn 0.45s cubic-bezier(0.34,1.56,0.64,1)';
+    el.textContent = STAGES[i].e;
+    document.getElementById('sTitle').textContent = STAGES[i].t;
+    document.getElementById('sSub').textContent   = STAGES[i].s;
+    document.getElementById('pFill').style.width  = ['10%','45%','78%'][i];
+}
+
+// ── SEARCH ────────────────────────────────────────────────────────────
+async function doSearch() {
+    const zip  = document.getElementById('zipcode').value.trim();
+    const name = document.getElementById('plant').value.trim();
+    if (!/^\d{5}$/.test(zip)) { alert('Please enter a valid 5-digit zip code.'); return; }
+    if (!name) { alert('Please enter a plant name.'); return; }
+    closeSug();
+
+    // Track plant search in Google Analytics
+    if (typeof gtag !== 'undefined') {
+        gtag('event', 'plant_search', {
+            'plant_name': name,
+            'zone': getZone(zip),
+            'zip_code': zip
+        });
+    }
+
+    const btn = document.getElementById('goBtn');
+    btn.disabled = true;
+    btn.textContent = 'Loading…';
+
+    const stopLoader = showLoader();
+
+    try {
+        const zone  = getZone(zip);
+        const frost = getFrost(zone);
+
+        const [pData, guide] = await Promise.all([
+            fetchPerenual(name),
+            askClaude(name, zone, frost)
+        ]);
+
+        stopLoader();
+        
+        // Debug: Log Perenual data to see what fields are available
+        console.log('Perenual data:', pData);
+        
+        renderGuide(name, zone, frost, pData, guide);
+        
+        // Track successful guide generation
+        if (typeof gtag !== 'undefined') {
+            gtag('event', 'guide_generated', {
+                'plant_name': name,
+                'zone': zone
+            });
+        }
+    } catch(err) {
+        stopLoader();
+        document.getElementById('output').innerHTML = `
+            <div class="err-card">
+                <strong>Something went wrong</strong>
+                <p>${err.message || 'Please try again in a moment.'}</p>
+            </div>`;
+        
+        // Track errors
+        if (typeof gtag !== 'undefined') {
+            gtag('event', 'guide_error', {
+                'plant_name': name,
+                'error_message': err.message || 'Unknown error'
+            });
+        }
+    } finally {
+        btn.disabled = false;
+        btn.textContent = 'Get My Guide';
+        pickedId = null;
+    }
+}
+
+async function fetchPerenual(name) {
+    try {
+        if (!pickedId) {
+            const r = await fetch(`https://perenual.com/api/species-list?key=${PKEY}&q=${encodeURIComponent(name)}`);
+            const d = await r.json();
+            if (d.data?.length) pickedId = d.data[0].id;
+        }
+        if (pickedId) {
+            const r = await fetch(`https://perenual.com/api/species/details/${pickedId}?key=${PKEY}`);
+            return await r.json();
+        }
+    } catch {}
+    return null;
+}
+
+async function askClaude(plantName, zone, frost) {
+    // Call our Cloudflare Worker instead of Claude API directly
+    const WORKER_URL = 'https://garden-guide-api.jmgardener123.workers.dev';
+
+    const res = await fetch(WORKER_URL, {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({
+            plantName: plantName,
+            zone: zone,
+            frost: frost
+        })
+    });
+
+    if (!res.ok) {
+        const err = await res.json();
+        throw new Error(err.error || 'Guide generation failed');
+    }
+
+    return await res.json();
+}
+
+// ── PEST ICON HELPER ─────────────────────────────────────────────────────
+function getPestIcon(pestName) {
+    const name = pestName.toLowerCase();
+    
+    // Fungal diseases
+    if (name.includes('fungus') || name.includes('mold') || name.includes('mildew') || 
+        name.includes('rot') || name.includes('blight') || name.includes('rust') ||
+        name.includes('wilt') || name.includes('scab')) {
+        return '🍄';
+    }
+    
+    // Bacterial diseases
+    if (name.includes('bacteria') || name.includes('bacterial') || name.includes('canker') ||
+        name.includes('fire blight') || name.includes('leaf spot')) {
+        return '🔬';
+    }
+    
+    // Slugs and snails
+    if (name.includes('slug') || name.includes('snail')) {
+        return '🐌';
+    }
+    
+    // Aphids
+    if (name.includes('aphid')) {
+        return '🦟';
+    }
+    
+    // Beetles
+    if (name.includes('beetle') || name.includes('weevil')) {
+        return '🪲';
+    }
+    
+    // Default to caterpillar for general insects/pests
+    return '🐛';
+}
+
+// ── RENDER ────────────────────────────────────────────────────────────
+function renderGuide(plantName, zone, frost, pData, guide) {
+    const imgUrl  = pData?.default_image?.regular_url || pData?.default_image?.medium_url || '';
+    const sciName = pData?.scientific_name?.[0] || '';
+    const hMin    = pData?.hardiness?.min;
+    const hMax    = pData?.hardiness?.max;
+    const zNum    = parseFloat(zone);
+
+    // Build Quick Stats Bar
+    let quickStatsHtml = '';
+    const stats = [];
+    
+    // Watering
+    if (pData?.watering) {
+        stats.push(`<div class="stat-badge"><span class="stat-icon">💧</span><span class="stat-label">Water:</span><span class="stat-value">${pData.watering}</span></div>`);
+    }
+    
+    // Maintenance
+    if (pData?.maintenance) {
+        stats.push(`<div class="stat-badge"><span class="stat-icon">🔧</span><span class="stat-label">Care:</span><span class="stat-value">${pData.maintenance}</span></div>`);
+    }
+    
+    // Growth Rate
+    if (pData?.growth_rate) {
+        stats.push(`<div class="stat-badge"><span class="stat-icon">🌱</span><span class="stat-label">Growth:</span><span class="stat-value">${pData.growth_rate}</span></div>`);
+    }
+    
+    // Attracts
+    if (pData?.attracts && pData.attracts.length > 0) {
+        const attractList = pData.attracts.slice(0, 3).join(', ');
+        stats.push(`<div class="stat-badge"><span class="stat-icon">🐝</span><span class="stat-label">Attracts:</span><span class="stat-value">${attractList}</span></div>`);
+    }
+    
+    if (stats.length > 0) {
+        quickStatsHtml = `<div class="quick-stats">${stats.join('')}</div>`;
+    }
+
+    // Build Warning Bars
+    let warningsHtml = '';
+    
+    // Toxicity Warning
+    const toxicHumans = pData?.poisonous_to_humans || 0;
+    const toxicPets = pData?.poisonous_to_pets || 0;
+    if (toxicHumans > 0 || toxicPets > 0) {
+        let toxicMsg = '⚠️ <strong>Toxicity Warning:</strong> ';
+        if (toxicHumans > 0 && toxicPets > 0) {
+            toxicMsg += 'This plant is toxic to both humans and pets.';
+        } else if (toxicHumans > 0) {
+            toxicMsg += 'This plant is toxic to humans.';
+        } else {
+            toxicMsg += 'This plant is toxic to pets.';
+        }
+        toxicMsg += ' Keep away from children and animals.';
+        warningsHtml += `<div class="warning-bar danger">${toxicMsg}</div>`;
+    }
+    
+    // Invasive Warning
+    if (pData?.invasive === true || pData?.invasive === 1) {
+        warningsHtml += `<div class="warning-bar">⚠️ <strong>Invasive Species:</strong> This plant is considered invasive in some regions. Check local regulations before planting.</div>`;
+    }
+
+    // Flowering Season for Overview
+    let floweringText = '';
+    if (pData?.flowering_season) {
+        floweringText = ` Flowers in ${pData.flowering_season.toLowerCase()}.`;
+    }
+
+    // Compat bar
+    let compatHtml = '';
+    if (hMin && hMax) {
+        const ok = zNum >= hMin && zNum <= hMax;
+        compatHtml = `<div class="compat-bar ${ok ? 'ok' : 'warn'}">
+            <span>${ok ? '✅' : '⚠️'}</span>
+            <span>
+                <strong>${ok ? `${plantName} is well-suited to Zone ${zone}.` : `Zone ${zone} is outside the typical range for ${plantName}.`}</strong>
+                ${ok ? ` Rated for zones ${hMin}–${hMax} — you're in great shape.`
+                     : ` Typically rated zones ${hMin}–${hMax}. See the Pro Tips tab for ways to succeed anyway.`}
+            </span>
+        </div>`;
+    }
+
+    // Photo block — only rendered if image loads, otherwise absent class hides box entirely
+    const photoBlockClass = imgUrl ? 'photo-present' : 'photo-absent';
+    const photoBoxHtml = imgUrl
+        ? `<div class="photo-box">
+               <img class="photo-img" src="${imgUrl}" alt="${plantName}"
+                    onload="this.classList.add('loaded')"
+                    onerror="this.closest('.result-wrap').classList.remove('photo-present'); this.closest('.result-wrap').classList.add('photo-absent');">
+           </div>`
+        : '';
+
+    document.getElementById('output').innerHTML = `
+    <div class="result-wrap ${photoBlockClass}">
+
+        ${photoBoxHtml}
+
+        <div class="plant-nameplate">
+            <div class="plant-tag-pill">🌱 Plant Guide</div>
+            <div class="plant-main-name">${plantName}</div>
+            ${sciName ? `<div class="plant-sci-name">${sciName}</div>` : ''}
+        </div>
+
+        <div class="zone-strip">
+            <div class="zc"><div class="zc-icon">📍</div><div><div class="zc-lbl">USDA Zone</div><div class="zc-val">${zone}</div></div></div>
+            <div class="zc"><div class="zc-icon">🌡️</div><div><div class="zc-lbl">Winter Low</div><div class="zc-val">${frost.t}</div></div></div>
+            <div class="zc"><div class="zc-icon">🌸</div><div><div class="zc-lbl">Last Frost</div><div class="zc-val">~${frost.l}</div></div></div>
+            <div class="zc"><div class="zc-icon">🍂</div><div><div class="zc-lbl">First Frost</div><div class="zc-val">~${frost.f}</div></div></div>
+        </div>
+
+        ${quickStatsHtml}
+        ${compatHtml}
+        ${warningsHtml}
+
+        <div class="tab-row">
+            <div class="tab-btn on"  onclick="swTab('overview',this)">Overview</div>
+            <div class="tab-btn"     onclick="swTab('conditions',this)">Conditions</div>
+            <div class="tab-btn"     onclick="swTab('calendar',this)">Care Calendar</div>
+            <div class="tab-btn"     onclick="swTab('pests',this)">Pests & Disease</div>
+            <div class="tab-btn"     onclick="swTab('tips',this)">Pro Tips</div>
+        </div>
+
+        <div class="panel on" id="p-overview">
+            <p class="overview-text">${guide.overview}${floweringText}</p>
+            ${guide.zone_notes ? `
+            <div class="zone-note">
+                <div class="zone-note-ico">🗺️</div>
+                <div>
+                    <div class="zone-note-lbl">Zone ${zone} Notes</div>
+                    <div class="zone-note-txt">${guide.zone_notes}</div>
+                </div>
+            </div>` : ''}
+        </div>
+
+        <div class="panel" id="p-conditions">
+            <div class="cond-grid">
+                <div class="cond-card"><div class="cond-top"><div class="cond-ico">☀️</div><div class="cond-lbl">Sunlight</div></div><div class="cond-val">${guide.conditions.sunlight}</div></div>
+                <div class="cond-card"><div class="cond-top"><div class="cond-ico">🌱</div><div class="cond-lbl">Soil</div></div><div class="cond-val">${guide.conditions.soil}</div></div>
+                <div class="cond-card"><div class="cond-top"><div class="cond-ico">🧪</div><div class="cond-lbl">Soil pH</div></div><div class="cond-val">${guide.conditions.ph}</div></div>
+                <div class="cond-card"><div class="cond-top"><div class="cond-ico">📏</div><div class="cond-lbl">Spacing</div></div><div class="cond-val">${guide.conditions.spacing}</div></div>
+                <div class="cond-card"><div class="cond-top"><div class="cond-ico">⬇️</div><div class="cond-lbl">Planting Depth</div></div><div class="cond-val">${guide.conditions.depth}</div></div>
+                <div class="cond-card"><div class="cond-top"><div class="cond-ico">📐</div><div class="cond-lbl">Mature Size</div></div><div class="cond-val">${guide.conditions.mature_size}</div></div>
+            </div>
+        </div>
+
+        <div class="panel" id="p-calendar">
+            <div class="cal-stack">
+                <div class="cal-card"><div class="cal-head"><div class="cal-ico pl">🌱</div><div class="cal-title">Planting</div></div><div class="cal-body">${guide.calendar.planting}</div></div>
+                <div class="cal-card"><div class="cal-head"><div class="cal-ico wa">💧</div><div class="cal-title">Watering</div></div><div class="cal-body">${guide.calendar.watering}</div></div>
+                <div class="cal-card"><div class="cal-head"><div class="cal-ico fe">🌿</div><div class="cal-title">Fertilizing</div></div><div class="cal-body">${guide.calendar.fertilizing}</div></div>
+                <div class="cal-card"><div class="cal-head"><div class="cal-ico pr">✂️</div><div class="cal-title">Pruning</div></div><div class="cal-body">${guide.calendar.pruning}</div></div>
+                <div class="cal-card"><div class="cal-head"><div class="cal-ico ha">🌾</div><div class="cal-title">Harvest / Bloom</div></div><div class="cal-body">${guide.calendar.harvest}</div></div>
+            </div>
+        </div>
+
+        <div class="panel" id="p-pests">
+            <div class="pest-stack">
+                ${(guide.pests||[]).map(p=>`
+                <div class="pest-row">
+                    <div class="pest-ico">${getPestIcon(p.name)}</div>
+                    <div><div class="pest-name">${p.name}</div><div class="pest-desc">${p.description}</div></div>
+                </div>`).join('')}
+            </div>
+        </div>
+
+        <div class="panel" id="p-tips">
+            <div class="tips-grid">
+                ${(guide.tips||[]).map((t,i)=>`
+                <div class="tip-card">
+                    <div class="tip-num">0${i+1}</div>
+                    <div class="tip-text">${t}</div>
+                </div>`).join('')}
+            </div>
+        </div>
+
+    </div>`;
+}
+
+function swTab(name, el) {
+    document.querySelectorAll('.panel').forEach(p => p.classList.remove('on'));
+    document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('on'));
+    document.getElementById('p-' + name).classList.add('on');
+    el.classList.add('on');
+}
+
+['zipcode','plant'].forEach(id => {
+    document.getElementById(id).addEventListener('keypress', e => {
+        if (e.key === 'Enter') { closeSug(); doSearch(); }
+    });
+});
+</script>
+</body>
+</html>
