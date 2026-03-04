@@ -1,0 +1,396 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Garden Centers & Nurseries Near Me - Plant Resources</title>
+    <meta name="description" content="Find local garden centers, plant nurseries, and gardening suppliers near you. Get plant care guides tailored to your location.">
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><path fill='%236b7f5e' d='M50 10 Q35 20 30 35 Q40 30 50 35 Q45 25 50 10z M50 35 Q65 30 70 20 Q60 30 50 50 Q55 35 50 35z M50 50 Q40 55 35 65 Q45 60 50 70 Q45 55 50 50z M50 70 Q60 65 65 55 Q55 65 50 85 Q55 70 50 70z M50 10 L50 85' stroke='%235a6b4f' stroke-width='2' fill='none'/></svg>">
+    <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,600;0,9..144,700;1,9..144,400;1,9..144,600&family=Source+Serif+4:ital,wght@0,300;0,400;0,600;1,300;1,400&display=swap" rel="stylesheet">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        
+        body {
+            font-family: 'Source Serif 4', Georgia, serif;
+            background: #faf7f2;
+            color: #3d3530;
+        }
+
+        .header {
+            background: #2e4057;
+            padding: 40px 20px;
+            text-align: center;
+        }
+
+        .brand {
+            font-family: 'Fraunces', serif;
+            font-size: 2.5em;
+            color: white;
+            margin-bottom: 8px;
+        }
+
+        .brand-sub {
+            color: rgba(255,255,255,0.8);
+            font-size: 1.1em;
+        }
+
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 60px 20px;
+        }
+
+        h1 {
+            font-family: 'Fraunces', serif;
+            font-size: 2.5em;
+            color: #2e4057;
+            margin-bottom: 20px;
+            text-align: center;
+        }
+
+        .intro {
+            text-align: center;
+            font-size: 1.15em;
+            line-height: 1.7;
+            margin-bottom: 50px;
+            max-width: 700px;
+            margin-left: auto;
+            margin-right: auto;
+            font-weight: 300;
+        }
+
+        .map-container {
+            background: white;
+            border-radius: 16px;
+            padding: 30px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+            margin-bottom: 50px;
+        }
+
+        .search-box {
+            display: flex;
+            gap: 12px;
+            margin-bottom: 24px;
+        }
+
+        .search-box input {
+            flex: 1;
+            padding: 14px 20px;
+            font-size: 1.05em;
+            border: 2px solid #e8dfd0;
+            border-radius: 10px;
+            font-family: 'Source Serif 4', serif;
+        }
+
+        .search-box button {
+            padding: 14px 28px;
+            background: #6b7f5e;
+            color: white;
+            border: none;
+            border-radius: 10px;
+            font-size: 1.05em;
+            font-family: 'Fraunces', serif;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+
+        .search-box button:hover {
+            background: #5a6b4f;
+        }
+
+        #map {
+            width: 100%;
+            height: 500px;
+            border-radius: 12px;
+            background: #f0f0f0;
+        }
+
+        .cta-section {
+            background: linear-gradient(135deg, #6b7f5e 0%, #4f6585 100%);
+            padding: 50px 40px;
+            border-radius: 16px;
+            text-align: center;
+            color: white;
+            margin-bottom: 50px;
+        }
+
+        .cta-section h2 {
+            font-family: 'Fraunces', serif;
+            font-size: 2.2em;
+            margin-bottom: 16px;
+        }
+
+        .cta-section p {
+            font-size: 1.2em;
+            line-height: 1.7;
+            margin-bottom: 28px;
+            opacity: 0.95;
+        }
+
+        .cta-btn {
+            display: inline-block;
+            padding: 16px 36px;
+            background: white;
+            color: #2e4057;
+            text-decoration: none;
+            border-radius: 10px;
+            font-family: 'Fraunces', serif;
+            font-weight: 600;
+            font-size: 1.1em;
+            transition: all 0.2s;
+        }
+
+        .cta-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(0,0,0,0.2);
+        }
+
+        .resources-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 30px;
+            margin-bottom: 50px;
+        }
+
+        .resource-card {
+            background: white;
+            padding: 32px;
+            border-radius: 16px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+        }
+
+        .resource-card h3 {
+            font-family: 'Fraunces', serif;
+            font-size: 1.6em;
+            color: #2e4057;
+            margin-bottom: 14px;
+        }
+
+        .resource-card p {
+            font-size: 1.05em;
+            line-height: 1.7;
+            color: #3d3530;
+            font-weight: 300;
+        }
+
+        .resource-card ul {
+            list-style: none;
+            margin-top: 16px;
+        }
+
+        .resource-card li {
+            padding: 8px 0;
+            padding-left: 24px;
+            position: relative;
+            font-size: 1.05em;
+        }
+
+        .resource-card li:before {
+            content: "🌿";
+            position: absolute;
+            left: 0;
+        }
+
+        @media (max-width: 768px) {
+            .resources-grid {
+                grid-template-columns: 1fr;
+            }
+            .search-box {
+                flex-direction: column;
+            }
+            #map {
+                height: 400px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <div class="brand">🌱 Zip Code Garden</div>
+        <div class="brand-sub">Gardening Resources</div>
+    </div>
+
+    <div class="container">
+        <h1>Find Garden Centers Near You</h1>
+        <p class="intro">Locate local nurseries, garden centers, and plant suppliers in your area. Find the plants you need, then use our tool to get personalized care guides for your exact location.</p>
+
+        <div class="map-container">
+            <div class="search-box">
+                <input type="text" id="locationInput" placeholder="Enter your city or zip code">
+                <button onclick="searchNurseries()">Find Nurseries</button>
+            </div>
+            <div id="map"></div>
+        </div>
+
+        <div class="cta-section">
+            <h2>Know What to Plant</h2>
+            <p>Found the perfect plants at your local nursery? Get personalized care guides with planting dates, watering schedules, and growing tips tailored to your exact hardiness zone.</p>
+            <a href="/" class="cta-btn">Get Your Plant Care Guide →</a>
+        </div>
+
+        <div class="resources-grid">
+            <div class="resource-card">
+                <h3>🏪 What to Look For</h3>
+                <p>When visiting a garden center, look for:</p>
+                <ul>
+                    <li>Healthy plants with vibrant color and no yellow leaves</li>
+                    <li>Plants labeled with hardiness zone information</li>
+                    <li>Staff who can answer questions about local growing conditions</li>
+                    <li>Organic soil amendments and fertilizers</li>
+                </ul>
+            </div>
+
+            <div class="resource-card">
+                <h3>📅 Best Time to Shop</h3>
+                <p>Timing your nursery visits:</p>
+                <ul>
+                    <li>Early spring for the best selection of perennials</li>
+                    <li>Late spring for annual flowers and vegetables</li>
+                    <li>Fall for trees, shrubs, and spring-blooming bulbs</li>
+                    <li>Weekday mornings for personalized attention from staff</li>
+                </ul>
+            </div>
+
+            <div class="resource-card">
+                <h3>💡 Shopping Tips</h3>
+                <p>Get the most out of your visit:</p>
+                <ul>
+                    <li>Bring your zip code to verify plant hardiness zones</li>
+                    <li>Ask about native plants adapted to your region</li>
+                    <li>Check return policies before purchasing</li>
+                    <li>Look for end-of-season sales for great deals</li>
+                </ul>
+            </div>
+
+            <div class="resource-card">
+                <h3>🌱 After You Buy</h3>
+                <p>Ensure success with your new plants:</p>
+                <ul>
+                    <li>Get a personalized care guide for each plant</li>
+                    <li>Plant within a few days of purchase when possible</li>
+                    <li>Water thoroughly after planting</li>
+                    <li>Keep tags for future reference and care needs</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        let map;
+        let service;
+        let infowindow;
+
+        function initMap() {
+            // Default to center of US
+            const center = { lat: 39.8283, lng: -98.5795 };
+            
+            map = new google.maps.Map(document.getElementById('map'), {
+                center: center,
+                zoom: 4,
+                styles: [
+                    {
+                        featureType: "poi",
+                        elementType: "labels",
+                        stylers: [{ visibility: "off" }]
+                    }
+                ]
+            });
+
+            infowindow = new google.maps.InfoWindow();
+
+            // Try to get user's location
+            if (navigator.geolocation) {
+                navigator.geolocation.getCurrentPosition(
+                    (position) => {
+                        const pos = {
+                            lat: position.coords.latitude,
+                            lng: position.coords.longitude,
+                        };
+                        map.setCenter(pos);
+                        map.setZoom(12);
+                        searchNearby(pos);
+                    },
+                    () => {
+                        // User denied location, that's fine
+                    }
+                );
+            }
+        }
+
+        function searchNurseries() {
+            const input = document.getElementById('locationInput').value;
+            if (!input) {
+                alert('Please enter a location');
+                return;
+            }
+
+            const geocoder = new google.maps.Geocoder();
+            geocoder.geocode({ address: input }, (results, status) => {
+                if (status === 'OK') {
+                    map.setCenter(results[0].geometry.location);
+                    map.setZoom(12);
+                    searchNearby(results[0].geometry.location);
+                } else {
+                    alert('Location not found. Please try a different search.');
+                }
+            });
+        }
+
+        function searchNearby(location) {
+            const request = {
+                location: location,
+                radius: '8000',
+                keyword: 'garden center nursery plant'
+            };
+
+            service = new google.maps.places.PlacesService(map);
+            service.nearbySearch(request, (results, status) => {
+                if (status === google.maps.places.PlacesServiceStatus.OK) {
+                    // Clear existing markers
+                    results.forEach((place) => {
+                        createMarker(place);
+                    });
+                }
+            });
+        }
+
+        function createMarker(place) {
+            const marker = new google.maps.Marker({
+                map: map,
+                position: place.geometry.location,
+                icon: {
+                            path: google.maps.SymbolPath.CIRCLE,
+                            scale: 8,
+                            fillColor: "#6b7f5e",
+                            fillOpacity: 1,
+                            strokeColor: "#ffffff",
+                            strokeWeight: 2,
+                        }
+            });
+
+            google.maps.event.addListener(marker, 'click', () => {
+                const content = `
+                    <div style="font-family: 'Source Serif 4', Georgia, serif; padding: 8px;">
+                        <h3 style="font-family: 'Fraunces', serif; color: #2e4057; margin-bottom: 8px;">${place.name}</h3>
+                        <p style="color: #3d3530; margin-bottom: 4px;">${place.vicinity}</p>
+                        ${place.rating ? `<p style="color: #6b7f5e;">⭐ ${place.rating} / 5</p>` : ''}
+                    </div>
+                `;
+                infowindow.setContent(content);
+                infowindow.open(map, marker);
+            });
+        }
+
+        // Allow enter key in search box
+        document.getElementById('locationInput').addEventListener('keypress', function(e) {
+            if (e.key === 'Enter') {
+                searchNurseries();
+            }
+        });
+    </script>
+    
+    <!-- Google Maps API -->
+    <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyB2C-lLjaxgxIG0dHdu9pYMnVyJn03USj0&libraries=places&callback=initMap"></script>
+</body>
+</html>
